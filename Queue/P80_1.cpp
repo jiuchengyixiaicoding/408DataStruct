@@ -5,24 +5,24 @@ using namespace std;
 
 #define MaxSize 10
 typedef struct SeqQueue {
-	//Êı¾İ´æ´¢¿Õ¼ä
+	//æ•°æ®å­˜å‚¨ç©ºé—´
 	int data[MaxSize];
-	//¶ÓÊ×
+	//é˜Ÿé¦–
 	int front;
-	//¶ÓÎ²
+	//é˜Ÿå°¾
 	int rear;
-	//Èë¶Ó³ö¶Ó±êÊ¶·û1Èë¶Ó0³ö¶Ó
+	//å…¥é˜Ÿå‡ºé˜Ÿæ ‡è¯†ç¬¦1å…¥é˜Ÿ0å‡ºé˜Ÿ
 	int tag;
 }SeqQueue;
 
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 bool init(SeqQueue& q) {
 	q.front = q.rear = 0;
 }
 
-//Èë¶Ó
-bool push(SeqQueue& q, int x) {
-	//¶ÓÊ×¶ÓÎ²ÏàµÈ£¬ÉÏ´Î²Ù×÷ÎªÈë¶ÓÇé¿öÏÂ£¬¶ÓÁĞ±ØÈ»Âú
+//å…¥é˜Ÿ
+bool enQueue(SeqQueue& q, int x) {
+	//é˜Ÿé¦–é˜Ÿå°¾ç›¸ç­‰ï¼Œä¸Šæ¬¡æ“ä½œä¸ºå…¥é˜Ÿæƒ…å†µä¸‹ï¼Œé˜Ÿåˆ—å¿…ç„¶æ»¡
 	if (q.rear == q.front && q.tag == 1) {
 		return false;
 	}
@@ -31,9 +31,9 @@ bool push(SeqQueue& q, int x) {
 	q.tag = 1;
 	return true;
 }
-//³ö¶Ó
-bool pop(SeqQueue& q, int& x) {
-	//¶ÓÊ×¶ÓÎ²ÏàµÈ£¬ÉÏ´Î²Ù×÷Îª³ö¶ÓÇé¿öÏÂ£¬¶ÓÁĞ±ØÈ»¿Õ
+//å‡ºé˜Ÿ
+bool deQueue(SeqQueue& q, int& x) {
+	//é˜Ÿé¦–é˜Ÿå°¾ç›¸ç­‰ï¼Œä¸Šæ¬¡æ“ä½œä¸ºå‡ºé˜Ÿæƒ…å†µä¸‹ï¼Œé˜Ÿåˆ—å¿…ç„¶ç©º
 	if (q.front == q.rear && q.tag == 0) {
 		return false;
 	}
