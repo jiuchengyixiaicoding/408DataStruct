@@ -4,21 +4,21 @@
 using namespace std;
 
 #define MaxSize 10
-//¶ÓÁĞµÄË³Ğò´æ´¢½á¹¹
+//é˜Ÿåˆ—çš„é¡ºåºå­˜å‚¨ç»“æ„
 typedef struct SeqQueue {
 	int data[MaxSize];
 	int front;
 	int rear;
 } SeqQueue;
 
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 bool initSeqQueue(SeqQueue &q) {
 	q.front = 0;
 	q.rear = 0;
 	return true;
 }
-//Èë¶Ó ÀûÓÃÇóÓà·¨±£Ö¤¶ÓÁĞÑ­»·£¬ÒòÎªÓàÊı²»¿ÉÄÜ´óÓÚÄ£MaxSize¡£Èç¹ûrear + 1ÎªMaxSizeÔòÎª0
-bool pushSeqQueue(SeqQueue &q, int x) {
+//å…¥é˜Ÿ åˆ©ç”¨æ±‚ä½™æ³•ä¿è¯é˜Ÿåˆ—å¾ªç¯ï¼Œå› ä¸ºä½™æ•°ä¸å¯èƒ½å¤§äºæ¨¡MaxSizeã€‚å¦‚æœrear + 1ä¸ºMaxSizeåˆ™ä¸º0
+bool enSeqQueue(SeqQueue &q, int x) {
 	if ((q.rear + 1) % MaxSize == q.front) {
 		return false;
 	}
@@ -26,8 +26,8 @@ bool pushSeqQueue(SeqQueue &q, int x) {
 	q.rear = (q.rear + 1) % MaxSize;
 	return true;
 }
-//³ö¶Ó
-bool popSeqQueue(SeqQueue& q, int &x) {
+//å‡ºé˜Ÿ
+bool deSeqQueue(SeqQueue& q, int &x) {
 	if (q.front == q.rear) {
 		return false;
 	}
@@ -36,7 +36,7 @@ bool popSeqQueue(SeqQueue& q, int &x) {
 	return true;
 }
 
-//¶ÓÁĞµÄÁ´Ê½´æ´¢½á¹¹
+//é˜Ÿåˆ—çš„é“¾å¼å­˜å‚¨ç»“æ„
 typedef struct LNode{
 	int data;
 	struct LNode *next;
@@ -45,8 +45,8 @@ typedef struct LNode{
 typedef struct LinkQueue {
 	LNode* front, * rear;
 }LinkQueue;
-//³õÊ¼»¯
-//´øÍ·½áµã
+//åˆå§‹åŒ–
+//å¸¦å¤´ç»“ç‚¹
 bool initHLinkQueue(LinkQueue &q) {
 	q.front = (LNode*)malloc(sizeof(LNode));
 	if (q.front == NULL) {
@@ -56,7 +56,7 @@ bool initHLinkQueue(LinkQueue &q) {
 	q.front->next = NULL;
 	return true;
 }
-//ÎŞÍ·½áµã
+//æ— å¤´ç»“ç‚¹
 bool initLinkQueue(LinkQueue& q) {
 	q.front = (LNode*)malloc(sizeof(LNode));
 	if (q.front == NULL) {
@@ -67,8 +67,8 @@ bool initLinkQueue(LinkQueue& q) {
 	return true;
 }
 
-//´øÍ·½áµã
-bool pushHLinkQueue(LinkQueue &q, int x) {
+//å¸¦å¤´ç»“ç‚¹
+bool enHLinkQueue(LinkQueue &q, int x) {
 	LNode* p = (LNode*)malloc(sizeof(LNode));
 	if (p == NULL) {
 		return false;
@@ -79,8 +79,8 @@ bool pushHLinkQueue(LinkQueue &q, int x) {
 	q.rear = p;
 }
 
-//ÎŞÍ·½áµã
-bool pushLinkQueue(LinkQueue &q, int x) {
+//æ— å¤´ç»“ç‚¹
+bool enLinkQueue(LinkQueue &q, int x) {
 	LNode* p = (LNode*)malloc(sizeof(LNode));
 	if (p == NULL) {
 		return false;
@@ -95,22 +95,22 @@ bool pushLinkQueue(LinkQueue &q, int x) {
 		q.rear = p;
 	}
 }
-//³ö¶Ó ´øÍ·½áµã
-bool popLinkQueue(LinkQueue& q, int& x){
+//å‡ºé˜Ÿ å¸¦å¤´ç»“ç‚¹
+bool deLinkQueue(LinkQueue& q, int& x){
 	if (q.front == q.rear) {
 		return false;
 	}
 	LNode* p = q.front->next;
 	q.front->next = p->next;
-	//¶ÓÁĞ×îºóÒ»¸öÔªËØ
+	//é˜Ÿåˆ—æœ€åä¸€ä¸ªå…ƒç´ 
 	if (p == q.rear) {
 		q.rear = q.front;
 	}
 	free(p);
 	return true;
 }
-//³ö¶Ó ÎŞÍ·½áµã
-bool popLinkQueue(LinkQueue &q, int& x) {
+//å‡ºé˜Ÿ æ— å¤´ç»“ç‚¹
+bool deLinkQueue(LinkQueue &q, int& x) {
 	if(q.front == q.rear) {
 		return false;
 	}
