@@ -6,27 +6,27 @@ using namespace std;
 #define MaxSize 100
 #define BlockSize 4
 
-//*******ÕâÀï¶¼ÊÇÉáÆúÊı×éµÚÒ»Î»ÏÂ±ê´Ó1¿ªÊ¼*******
-//¶¨³¤
+//*******è¿™é‡Œéƒ½æ˜¯èˆå¼ƒæ•°ç»„ç¬¬ä¸€ä½ä¸‹æ ‡ä»1å¼€å§‹*******
+//å®šé•¿
 typedef struct SString {
 	char ch[MaxSize];
 	int length;
 }SString;
 
-//¶Ñ·ÖÅä´æ´¢
+//å †åˆ†é…å­˜å‚¨
 typedef struct HString {
 	char* ch;
 	int length;
 }HString;
 
-//¿éÁ´´æ´¢£ºÉèÎª4Î»charÊı×éµÄÔ­ÒòÊÇ32Î»Çé¿öÏÂÖ»´æÒ»¸ö×Ö·ûÖ»Õ¼Ò»¸ö×Ö½Ú£¬¶øÖ¸ÕëÕ¼ËÄ¸ö×Ö½Ú£¬
-// ÕâÑùÒ»À´Êµ¼Ê´æ´¢µÄÄÚÈİ·´¶øÏà¶Ô½ÏÉÙ£¬ÕâÖÖÇé¿ö³ÆÎª´æ´¢ÃÜ¶ÈµÍ£¬²»ÊÇºÜºÃ
+//å—é“¾å­˜å‚¨ï¼šè®¾ä¸º4ä½charæ•°ç»„çš„åŸå› æ˜¯32ä½æƒ…å†µä¸‹åªå­˜ä¸€ä¸ªå­—ç¬¦åªå ä¸€ä¸ªå­—èŠ‚ï¼Œè€ŒæŒ‡é’ˆå å››ä¸ªå­—èŠ‚ï¼Œ
+// è¿™æ ·ä¸€æ¥å®é™…å­˜å‚¨çš„å†…å®¹åè€Œç›¸å¯¹è¾ƒå°‘ï¼Œè¿™ç§æƒ…å†µç§°ä¸ºå­˜å‚¨å¯†åº¦ä½ï¼Œä¸æ˜¯å¾ˆå¥½
 //typedef struct lstring {
 //	char block[4];
 //	struct lstring* next;
 //}lstring;
 
-//¸ø×Ö·û´®¸³Öµ
+//ç»™å­—ç¬¦ä¸²èµ‹å€¼
 bool strAssign(SString &t, char chars[], int len) {
 	int i = 1;
 	while (i <= len) {
@@ -38,7 +38,7 @@ bool strAssign(SString &t, char chars[], int len) {
 	return true;
 }
 
-//×Ö·û´®¿½±´
+//å­—ç¬¦ä¸²æ‹·è´
 bool strCopy(SString t, SString &s) {
 	int i = 1;
 	while (i <= t.length) {
@@ -49,12 +49,12 @@ bool strCopy(SString t, SString &s) {
 	return true;
 }
 
-//×Ö·û´®ÅĞ¿Õ
+//å­—ç¬¦ä¸²åˆ¤ç©º
 bool strEmpty(SString t) {
 	return t.length == 0;
 }
 
-//×Ö·û´®±È½Ï´óĞ¡£¬´ó1 µÈ0 Ğ¡-1
+//å­—ç¬¦ä¸²æ¯”è¾ƒå¤§å°ï¼Œå¤§1 ç­‰0 å°-1
 int strCompare(SString t, SString s) {
 	int i = 1;
 	while (i <= t.length && i <= s.length) {
@@ -63,7 +63,7 @@ int strCompare(SString t, SString s) {
 		}
 		i++;
 	}
-	//Ç°ÃæÈ«²¿Æ¥ÅäÔò±È½Ï³¤¶È
+	//å‰é¢å…¨éƒ¨åŒ¹é…åˆ™æ¯”è¾ƒé•¿åº¦
 	if (t.length < s.length) { 
 		return -1; 
 	}
@@ -75,12 +75,12 @@ int strCompare(SString t, SString s) {
 	}
 }
 
-//·µ»Ø×Ö·û´®³¤¶È
+//è¿”å›å­—ç¬¦ä¸²é•¿åº¦
 int strLength(SString t) {
 	return t.length;
 }
 
-//·µ»Ø×Ö·û´®´ÓposÆğ£¬½ØÒ»¶Î³¤¶ÈÎªlenµÄ×Ó´®
+//è¿”å›å­—ç¬¦ä¸²ä»posèµ·ï¼Œæˆªä¸€æ®µé•¿åº¦ä¸ºlençš„å­ä¸²
 bool strSubSting(SString t, SString &sub, int pos, int len) {
 	if (pos + len - 1 > t.length) {
 		return false;
@@ -94,7 +94,7 @@ bool strSubSting(SString t, SString &sub, int pos, int len) {
 	return true;
 }
 
-//×Ö·û´®ºÏ²¢£¨ºÏ²¢Ë³Ğò°´º¯Êı²ÎÊıË³Ğò£©
+//å­—ç¬¦ä¸²åˆå¹¶ï¼ˆåˆå¹¶é¡ºåºæŒ‰å‡½æ•°å‚æ•°é¡ºåºï¼‰
 SString contact(SString a, SString b) {
 	SString t;
 	int i = 1;
@@ -110,21 +110,20 @@ SString contact(SString a, SString b) {
 	t.ch[i] = '\0';
 	return t;
 }
-//×Ó´®³öÏÖÔÚ×Ö·û´®µÚ¼¸Î»
+//å­ä¸²å‡ºç°åœ¨å­—ç¬¦ä¸²ç¬¬å‡ ä½
 int index(SString t, SString s) {
 	int i = 1, j = 1, n = t.length, m = s.length;
 	while (i <= n && j <= m) {
-		//Æ¥ÅäÊ§°Ü×Ó´®ÖØÍ·¿ªÊ¼£¬Ö÷´®+1
+		//åŒ¹é…å¤±è´¥å­ä¸²é‡å¤´å¼€å§‹ï¼Œä¸»ä¸²+1
 		if (t.ch[i++] != s.ch[j++]) {
 			j = 1;
 		}
 	}
-	//×Ó´®Î´Æ¥Åäµ½Ä©Î²Ö÷´®ÒÑ¾­Ñ­»·½áÊø
-	if (i == t.length + 1 && j  < s.length + 1) {
-		return -1;
+	//jå¤§äºå­ä¸²è¡¨ç¤ºå­ä¸²ä¸ä¸»ä¸²æŸéƒ¨åˆ†å…¨éƒ¨åŒ¹é…ï¼Œå¦åˆ™åŒ¹é…å¤±è´¥
+	if (j > s.length) {
+		return i - s.length;
 	}
-	//Ö÷´®Î´Ñ­»·½áÊø×Ó´®Æ¥Åäµ½Ä©Î²£¬»òÖ÷´®Ñ­»·½áÊøÇÒ×Ó´®Æ¥Åäµ½Ä©Î²
-	return j - 1;
+	return -1;
 }
 
 int main() {
